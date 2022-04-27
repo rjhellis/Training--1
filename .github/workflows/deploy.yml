@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
 name: Azure ARM
 env: 
-  targetEnv: rockydevops-prod
+  targetEnv: rockydevops-prod1
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
