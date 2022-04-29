@@ -53,3 +53,18 @@ jobs:
     - name: Docker Push 
       run: docker push $registryName/$repositoryName:$tag
   
+  deploy: 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+          # Log into Azure
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: "rockydevops-dev"
+        images: $registryName/$repositoryName:$tag
+        
