@@ -2,3 +2,4 @@ Sample app from: https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcor
 test3
 Test Challenge #5
 New
+test6
