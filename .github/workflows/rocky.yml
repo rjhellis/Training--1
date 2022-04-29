@@ -72,6 +72,8 @@ jobs:
   deploy-test: 
     runs-on: ubuntu-latest
     needs: deploy-dev
+    environment: test
+    
     steps:
     - uses: actions/checkout@v2
           # Log into Azure
@@ -87,6 +89,8 @@ jobs:
   deploy-prod: 
     runs-on: ubuntu-latest
     needs: deploy-test
+    environment: prod
+
     steps:
     - uses: actions/checkout@v2
           # Log into Azure
