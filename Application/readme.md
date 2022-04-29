@@ -1,7 +1,2 @@
-Sample app from: https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/razor-pages-tests/samples/3.x
-test3
-Test Challenge #5
-New
-test6
-test
-test again
+BRAND NEW Sample app from: https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/razor-pages-tests/samples/3.x
+
