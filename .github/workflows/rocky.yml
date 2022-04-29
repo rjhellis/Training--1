@@ -5,7 +5,12 @@ on:
     branches: [ main ]
     paths:
       - 'Application/**'
-      
+env: 
+  registryName: rockydevopsreg.azurecr.io
+  repositoryName: wth/dotnetcoreapp
+  dockerFolderPath: Application/src/RazorPagesTestSample
+  tag: ${{github.run_number}}
+  
 jobs:
   build:
 
@@ -21,3 +26,14 @@ jobs:
       run: dotnet build ./Application/src/RazorPagesTestSample/RazorPagesTestSample.csproj --configuration Release --no-restore
     - name: Test
       run: dotnet test ./Application/tests/RazorPagesTestSample.Tests/RazorPagesTestSample.Tests.csproj  --no-restore --verbosity normal
+  docker-build-push: 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker login
+      run: docker login $registryName -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
+    - name: Docker Build
+      run: docker build -t $registryName/$repositoryName:$tag --build-arg build_version=$tag $dockerFolderPath 
+    - name: Docker Push 
+      run: docker push $registryName/$repositoryName:$tag
+  
