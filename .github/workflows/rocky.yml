@@ -5,6 +5,7 @@ on:
     branches: [ main ]
     paths:
       - 'Application/**'
+      - '.github/workflows/rocky.yml'
 env: 
   registryName: rockydevopsreg.azurecr.io
   repositoryName: wth/dotnetcoreapp
